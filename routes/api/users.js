@@ -9,6 +9,10 @@ const router = Router();
 
 router.post("/register", validateBody(schemas.registerSchema), AuthCtrl.register);
 
+router.get("/verify/:verificationToken", AuthCtrl.verify);
+
+router.post("/verify", validateBody(schemas.userEmailSchema), AuthCtrl.resendVerify);
+
 router.post("/login", validateBody(schemas.loginSchema), AuthCtrl.login);
 
 router.get("/current", authenticate, AuthCtrl.getCurrent);
